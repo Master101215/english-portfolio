@@ -3,144 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charles Chen - English Portfolio</title>
+    <title>Clean & Modern Aesthetic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- CSS VARIABLES (Easy customization) --- */
         :root {
-            font-family: Arial, sans-serif;
-            color: #333;
-            background: #f5f7fb;
-            line-height: 1.6;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --radius: 16px;
+            --transition: all 0.3s ease;
         }
 
-        body {
+        /* --- RESET & BASE STYLES --- */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        header {
-            background: #234a6b;
-            color: #fff;
-            padding: 24px 16px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-
-        header p {
-            margin: 8px auto 0;
-            max-width: 720px;
-            color: #d9e4f2;
-        }
-
-        nav {
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            padding: 14px 16px;
-            background: #1f3f5a;
+            flex-direction: column;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
         }
 
         nav a {
-            color: #eef5ff;
-            text-decoration: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            transition: background 0.2s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
         }
 
-        nav a:hover {
-            background: rgba(255,255,255,0.12);
+        nav a:hover, nav a.active {
+            color: var(--text-main);
         }
 
-        main {
-            max-width: 940px;
-            margin: 32px auto;
-            padding: 0 16px;
-        }
-
+        /* --- HERO SECTION --- */
         .hero {
-            background: #fff;
-            border-radius: 18px;
-            padding: 28px;
-            box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+            max-width: 800px;
+            margin: 4rem auto;
+            text-align: center;
+            padding: 0 2rem;
         }
 
-        .hero h2 {
-            margin-top: 0;
+        .badge {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--accent);
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* --- BUTTONS --- */
+        .cta-btn {
+            background: var(--text-main);
+            color: #ffffff;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- CONTENT/GRID SECTION --- */
+        .main-content {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem;
+            flex-grow: 1;
         }
 
         .grid {
             display: grid;
-            gap: 20px;
-            margin-top: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
 
         .card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 22px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px); /* Subtle glassmorphism */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            font-size: 1.25rem;
         }
 
         .card h3 {
-            margin-top: 0;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px 16px;
-            color: #5c6d7f;
+        .card p {
+            color: var(--text-muted);
             font-size: 0.95rem;
         }
 
-        @media (min-width: 720px) {
-            .grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Welcome to Your Website</h1>
-        <p>A clean and simple homepage with sections for about, features, and contact. This template is ready to customize.</p>
+        <div class="logo">✨ MinimalStudio</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <section class="hero">
+        <span class="badge">Introducing Version 2.0</span>
+        <h1>Design is intelligence made visible.</h1>
+        <p>Experience a digital interface stripped of clutter, leaving only the essentials beautifully arranged for the ultimate user experience.</p>
+        <a href="#" class="cta-btn">Get Started Today</a>
+    </section>
 
-    <main>
-        <section class="hero" id="about">
-            <h2>About This Site</h2>
-            <p>This basic website is designed to be easy to read and simple to update. Use it as a starting point for your portfolio, project page, or small business website.</p>
-        </section>
+    <main class="main-content">
+        <div class="grid">
+            
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Blazing Fast</h3>
+                <p>Optimized down to the last pixel to ensure your experience feels instantaneous and fluid on any machine.</p>
+            </div>
 
-        <section class="grid" id="features">
-            <article class="card">
-                <h3>Responsive Layout</h3>
-                <p>The page looks good on both mobile and desktop devices with a responsive grid and flexible spacing.</p>
-            </article>
-            <article class="card">
-                <h3>Modern Design</h3>
-                <p>Clean colors, readable typography, and gentle shadows create a modern and approachable style.</p>
-            </article>
-        </section>
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h3>Pure Aesthetic</h3>
+                <p>Carefully selected typography, generous whitespace, and a restrained palette designed to focus on your content.</p>
+            </div>
 
-        <section class="card" id="contact">
-            <h3>Get in Touch</h3>
-            <p>Ready to make it your own? Add your name, services, and links to social profiles or email here.</p>
-        </section>
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Secure & Private</h3>
+                <p>Built with modern standards keeping your data locked tight, away from prying eyes and third-party trackers.</p>
+            </div>
+
+        </div>
     </main>
 
     <footer>
-        &copy; 2026 Basic Website. Built with HTML and CSS.
+        <p>&copy; 2026 MinimalStudio. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
